@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>www.gregrsmith.com</title>
+</head>
+<body>
+
+<button type="button" onclick="httpGetAPODAsync(displayAPOD)">
+Click me to get the time and date.</button>
+<p id="demo"></p>
+<img id="apodImg"></img>
+<script>
+
+
+var url = "https://api.nasa.gov/planetary/apod?api_key=0b33tVGBkzuCWCTpuQCyyF2NhDxbVRu7kcsN9snr";
+
+function httpGetAPODAsync(callback)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() { 
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            callback(xmlHttp);
+    }
+    xmlHttp.open("GET", url, true); // true for asynchronous 
+    xmlHttp.send(null);
+}
+
+function displayAPOD(xml){
+    var responseText = xml.responseText;
+    document.getElementById('demo').innerHTML = responseText;
+    
+    var responseArr = JSON.parse(responseText);
+    if(responseArr != null)
+        document.getElementById('apodImg').src = responseArr["url"];
+}
+
+</script>
+</body>
+</html>
