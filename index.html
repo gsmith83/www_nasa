@@ -1,81 +1,32 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title>www.gregrsmith.com</title>
+    <meta charset="utf-8">
+    <title>www.gregrsmith.com</title>
 </head>
+
 <body onload="displayNASAStuff()">
+    <script src="js_src/nasa_api.js"></script>
 
-<!--    TODO: consider allowing users to get differint pics of the day
-<button type="button" onclick="httpGetAsync('https://api.nasa.gov/planetary/apod?api_key=0b33tVGBkzuCWCTpuQCyyF2NhDxbVRu7kcsN9snr', displayAPOD)">
-Click me to get the time and date.</button>
--->
+    <!-- TODO: decide whether to generate html tags via js or include them here -->
 
-<h2>Picture of the Day</h2>
-<img id="apodImg"></img><!-- TODO: consider inserting these elements into the DOM below (document.createElement("BUTTON"))-->
-<p id="apodTitle"></p>
-<p id="apodCopyright"></p>
-<p id="apodText"></p>
-<h2>Near-Earth Objects</h2>
-<p id="neoFeedOhNo"></p>
+    <div id="apod">
+        <h2>Picture of the Day</h2>
+        <img id="apodImg" />
+        <p id="apodTitle"></p>
+        <p id="apodCopyright"></p>
+        <p id="apodText"></p>
+    </div>
 
-<script>
-    
-var todayDate = new Date();
-var month = todayDate.getMonth() + 1;
-var todayDateISO;
-if(month < 10)
-    todayDateISO = todayDate.getFullYear() + "-0" + month + "-" + todayDate.getDate();
-else
-    todayDateISO = todayDate.getFullYear() + "-" + month + "-" + todayDate.getDate();
-    
-function displayNASAStuff()
-{
-    var apiKey = "0b33tVGBkzuCWCTpuQCyyF2NhDxbVRu7kcsN9snr";
-    
-    // TODO: take refactor apiKey
-    httpGetAsync('https://api.nasa.gov/planetary/apod?api_key=' + apiKey, displayAPOD);
-    httpGetAsync('https://api.nasa.gov/neo/rest/v1/feed?start_date=' + todayDateISO + '&end_date=' + todayDateISO + '&api_key=' + apiKey, displayNEOFeed);
-}
+    <div id="neo">
+        <h2>Near-Earth Objects</h2>
+        <p id="neoFeedOhNo"></p>
+    </div>
 
-function httpGetAsync(url, callback)
-{
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.onreadystatechange = function() { 
-        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-            callback(xmlHttp.responseText);
-    }
-    xmlHttp.open("GET", url, true); // true for asynchronous 
-    xmlHttp.send(null);
-}
-
-function displayAPOD(responseText){
-    var responseArr = JSON.parse(responseText);
-    if(responseArr != null){
-        document.getElementById('apodImg').src = responseArr["url"];
-        document.getElementById('apodTitle').innerHTML = responseArr["title"];
-        document.getElementById('apodCopyright').innerHTML = responseArr["copyright"] + " - " + responseArr["date"];
-        document.getElementById('apodText').innerHTML = responseArr["explanation"];
-    }
-}
-
-function displayNEOFeed(responseText){
-    var responseArr = JSON.parse(responseText);
-    var elementCount = responseArr["element_count"];
-    
-    if(responseArr != null){
-        document.getElementById('neoFeedOhNo').innerHTML = "Oh shit! There are " + elementCount + " near-earth asteroids threatening our existence today!";
-    }
-    
-    for(i = 0; i < elementCount; i++){
-        var neoArr = responseArr["near_earth_objects"][todayDateISO][i];
-        var para = document.createElement("p");
-        var textNode = document.createTextNode("Object " + neoArr["name"] + " will come within " + neoArr["close_approach_data"][0]["miss_distance"]["miles"] + " miles from Earth. Phew!");
-        para.appendChild(textNode);
-        document.body.appendChild(para);
-    }
-}
-
-</script>
+    <div id="marsrover">
+        <h2>Mars Rover</h2>
+    </div>
 </body>
+
 </html>
