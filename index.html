@@ -1,31 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
 
 <head>
     <meta charset="utf-8">
-    <title>www.gregrsmith.com</title>
+    <link rel="stylesheet" href="styles.css">
+    <title>NASA Daily Digest</title>
 </head>
 
 <body onload="displayNASAStuff()">
     <script src="js_src/nasa_api.js"></script>
 
-    <!-- TODO: decide whether to generate html tags via js or include them here -->
-
-    <div id="apod">
-        <h2>Picture of the Day</h2>
-        <img id="apodImg" />
-        <p id="apodTitle"></p>
-        <p id="apodCopyright"></p>
-        <p id="apodText"></p>
+    <div id="banner">
+        <img src="img/logo.png" alt="nasalogo.jpg" width=120/>
+        <h1>NASA Daily Digest</h1>
+        <p>Your daily dose of NASA info</p>
     </div>
 
-    <div id="neo">
-        <h2>Near-Earth Objects</h2>
-        <p id="neoFeedOhNo"></p>
-    </div>
+    <div id="wrapper">
+        <div id="apod">
+            <h2>Picture of the Day</h2>
+            <img id="apodImg" />
+            <p id="apodTitle"></p>
+            <p id="apodCopyright"></p>
+            <p id="apodText"></p>
+        </div>
 
-    <div id="marsrover">
-        <h2>Mars Rover</h2>
+        <hr/>
+
+        <div id="neo">
+            <h2>Near-Earth Objects</h2>
+            <p id="neoFeedOhNo"></p>
+        </div>
+
+        <hr/>
+
+        <div id="marsrover">
+            <h2>Mars Rover</h2>
+        </div>
     </div>
 </body>
 
