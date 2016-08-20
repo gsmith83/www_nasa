@@ -37,11 +37,12 @@ service_version:"v1"
 title:"Gamma-rays and Comet Dust"
 url:"http://apod.nasa.gov/apod/image/1608/PerseidsMAGIC_DLopez1024.jpg"
 */
-
+//TODO: allow choosing days
 function displayAPOD(xml) {
     var responseArr = JSON.parse(xml.responseText);
     if (responseArr != null) {
         document.getElementById('apodImg').src = responseArr["url"];
+        document.getElementById('apodLink').href = responseArr["hdurl"];
         document.getElementById('apodTitle').innerHTML = responseArr["title"];
         document.getElementById('apodCopyright').innerHTML = responseArr["copyright"] + " - " + responseArr["date"];
         document.getElementById('apodText').innerHTML = responseArr["explanation"];
@@ -49,9 +50,9 @@ function displayAPOD(xml) {
 }
 
 // Finds all neos on today's date and displays them by generating html tags
-/* Response Array
-
-*/
+//TODO: display all information about closes neo
+//TODO: allow choosing days
+//TODO: display the date and info of nearest neo that threatens earth
 function displayNEOFeed(xml) {
     var responseArr = JSON.parse(xml.responseText);
     var elementCount = responseArr["element_count"];
@@ -70,13 +71,25 @@ function displayNEOFeed(xml) {
 }
 
 // Mars rover stuff
+//TODO: get latest photos
+//TODO: allow uses to choose day
 function displayMarsRover(xml) {
     var responseArr = JSON.parse(xml.responseText);
     var elementCount = responseArr["photos"].length;
 
-    if (elementCount > 0) {
+    for (i = 0; i < elementCount; i++) {
+        var imgLink = document.createElement("a");
+        imgLink.href = responseArr["photos"][i]["img_src"];
+
         var imgNode = document.createElement("img");
-        imgNode.src = responseArr["photos"][0]["img_src"];
-        document.getElementById("marsrover").appendChild(imgNode);
+        imgNode.src = imgLink.href;
+        imgNode.alt = "rover_pic" + i;
+        imgNode.width = 125;
+        imgNode.style = "display:inline;margin:5px;";
+
+        imgLink.appendChild(imgNode);
+        document.getElementById("marsrover").appendChild(imgLink);
     }
 }
+
+//TODO: more apis

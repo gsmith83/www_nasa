@@ -11,15 +11,25 @@
     <script src="js_src/nasa_api.js"></script>
 
     <div id="banner">
-        <img src="img/logo.png" alt="nasalogo.jpg" width=120/>
-        <h1>NASA Daily Digest</h1>
-        <p>Your daily dose of NASA info</p>
+        <img src="img/logo.png" alt="nasalogo.jpg" height=150 style="float:left;" />
+        <div style="display:inline-block;">
+            <h1 style="margin:5px">NASA Daily Digest</h1>
+            <p style="margin:5px">Your daily dose of NASA info</p>
+            <div style="margin:auto;">
+                <!-- Page Bookmarks -->
+                <a href="#apod">Pic of the Day</a>
+                <a href="#neo">Near-Earth Objects</a>
+                <a href="#marsrover">Mars Rover Pics</a>
+            </div>
+        </div>
     </div>
 
     <div id="wrapper">
         <div id="apod">
             <h2>Picture of the Day</h2>
-            <img id="apodImg" />
+            <a id="apodLink">
+                <img id="apodImg" alt="Picture of the Day" />
+            </a>
             <p id="apodTitle"></p>
             <p id="apodCopyright"></p>
             <p id="apodText"></p>
@@ -37,7 +47,14 @@
         <div id="marsrover">
             <h2>Mars Rover</h2>
         </div>
+
+        <div id="footer">
+            <p>Gregory Smith</p>
+        </div>
+
     </div>
+
+
 </body>
 
 </html>
