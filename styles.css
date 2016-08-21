@@ -39,3 +39,8 @@ img {
     display: block;
     margin: auto;
 }
+
+#neoTable {
+    width: 100%;
+    text-align: center;
+}

@@ -12,7 +12,9 @@ function displayNASAStuff() {
 
     httpGetAsync('https://api.nasa.gov/planetary/apod?api_key=' + apiKey, displayAPOD);
     httpGetAsync('https://api.nasa.gov/neo/rest/v1/feed?start_date=' + todayDateISO + '&end_date=' + todayDateISO + '&api_key=' + apiKey, displayNEOFeed);
-    httpGetAsync('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=' + apiKey, displayMarsRover)
+    httpGetAsync('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=' + apiKey, displayMarsRover);
+
+    // TODO: Implement caching of xmlHttp responseText for each api (should js even do this?)
 }
 
 // Async http getter
@@ -63,10 +65,45 @@ function displayNEOFeed(xml) {
 
     for (i = 0; i < elementCount; i++) {
         var neoArr = responseArr["near_earth_objects"][todayDateISO][i];
-        var para = document.createElement("p");
-        var textNode = document.createTextNode("Object " + neoArr["name"] + " will come within " + neoArr["close_approach_data"][0]["miss_distance"]["miles"] + " miles from Earth. Phew!");
-        para.appendChild(textNode);
-        document.getElementById("neo").appendChild(para);
+
+        // enter all information into a table
+
+        var row = document.createElement("tr");
+        // each td element goes into the row
+        // Fatal
+        var tdFatal = document.createElement("td");
+        tdFatal.innerHTML = neoArr["is_potentially_hazardous_asteroid"];
+        row.appendChild(tdFatal);
+        // <!-- absolute_magnitude_h -->
+        var tdMag = document.createElement("td");
+        tdMag.innerHTML = neoArr["absolute_magnitude_h"];
+        row.appendChild(tdMag);
+        // <!-- name -->
+        var tdName = document.createElement("td");
+        tdName.innerHTML = neoArr["name"];
+        row.appendChild(tdName);
+        // <!-- nasa_jpl_url --><!-- neo_reference_id -->
+        var tdJPL = document.createElement("td");
+        var link = document.createElement("a");
+        link.href = neoArr["nasa_jpl_url"];
+        link.innerHTML = neoArr["neo_reference_id"];
+        row.appendChild(link);
+        // <!-- close_approach_data [0] miss_distance miles -->
+        var tdMiles = document.createElement("td");
+        tdMiles.innerHTML = neoArr["close_approach_data"][0]["miss_distance"]["miles"];
+        row.appendChild(tdMiles);
+        // <!-- close_approach_data [0] relative_velocity miles_per_hour -->
+        var tdSpeed = document.createElement("td");
+        tdSpeed.innerHTML = neoArr["close_approach_data"][0]["relative_velocity"]["miles_per_hour"];
+        row.appendChild(tdSpeed);
+        // <!-- estimated_diameter meters estimated_diameter_max --><!-- estimated_diameter meters estimated_diameter_min -->
+        var tdDia = document.createElement("td");
+        tdDia.innerHTML = "Between " + neoArr["estimated_diameter"]["meters"]["estimated_diameter_max"] + " and " +
+            neoArr["estimated_diameter"]["meters"]["estimated_diameter_max"] + " meters";
+        row.appendChild(tdDia);
+
+        document.getElementById("neoTable").appendChild(row);
+
     }
 }
 
