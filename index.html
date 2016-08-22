@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en-US">
-
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="styles.css">
@@ -12,16 +11,16 @@
 
     <div id="banner">
         <img src="img/logo.png" alt="nasalogo.jpg" height=150 style="float:left;" />
-        <div style="display:inline-block;">
+        
             <h1 style="margin:5px">NASA Daily Digest</h1>
             <p style="margin:5px">Your daily dose of NASA info</p>
-            <div style="margin:auto;">
                 <!-- Page Bookmarks -->
-                <a href="#apod">Pic of the Day</a>
-                <a href="#neo">Near-Earth Objects</a>
-                <a href="#marsrover">Mars Rover Pics</a>
-            </div>
-        </div>
+                <ul id="bookmarkBar">
+                <li><a href="#apod">Pic of the Day</a></li>
+                <li><a href="#neo">Near-Earth Objects</a></li>
+                <li><a href="#marsrover">Mars Rover Pics</a></li>
+                </ul>
+        
     </div>
 
     <div id="wrapper">
@@ -59,12 +58,9 @@
                     </th>
                     <th>
                         Speed
-                        <!-- close_approach_data [0] relative_velocity miles_per_hour -->
                     </th>
                     <th>
                         Diameter
-                        <!-- estimated_diameter meters estimated_diameter_max -->
-                        <!-- estimated_diameter meters estimated_diameter_min -->
                     </th>
                 </tr>
             </table>

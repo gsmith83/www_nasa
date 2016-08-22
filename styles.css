@@ -9,17 +9,24 @@ body {
 
 #banner {
     background-color: firebrick;
-    padding: 10px 20px 10px 20px;
+    padding: 10px 20px;
 }
 
-a {
+ul#bookmarkBar {
+    list-style-type: none;
+    overflow: hidden; /* Banner background doesn't extend to bookmarkBar without */
+    margin: 15px 0 0 0;
+    padding: 0;
+    font-size: 20px;
+}
+ul#bookmarkBar li a {
     color: white;
-    margin: 0px 5px 0px 5px;
+    padding: 5px;
     text-decoration: none;
+    float: left;
 }
-
-a:hover {
-    text-decoration: underline;
+ul#bookmarkBar a:hover {
+    background-color: #4D0F0F;
 }
 
 #wrapper {
@@ -35,9 +42,9 @@ a:hover {
     text-align: center;
 }
 
-img {
-    display: block;
+img#apodImg {
     margin: auto;
+    display: block; /* Why is block necessary? */
 }
 
 #neoTable {
