@@ -61,9 +61,15 @@ img#apodImg {
     text-align: center;
 }
 
-table#neoTable td {
-    max-width: 70px;
+table#neoTable td,
+a {
+    max-width: 90px;
     overflow: hidden;
+    font-size: 80%;
+}
+
+table#neoTable th {
+    max-width: 90px;
     font-size: 80%;
 }
 

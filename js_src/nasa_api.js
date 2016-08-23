@@ -60,10 +60,6 @@ function displayNEOFeed(xml) {
 
         var row = document.createElement("tr");
         // each td element goes into the row
-        // Fatal
-        var tdFatal = document.createElement("td");
-        tdFatal.innerHTML = neoArr["is_potentially_hazardous_asteroid"];
-        row.appendChild(tdFatal);
         // <!-- absolute_magnitude_h -->
         var tdMag = document.createElement("td");
         tdMag.innerHTML = neoArr["absolute_magnitude_h"];
@@ -89,7 +85,7 @@ function displayNEOFeed(xml) {
         row.appendChild(tdSpeed);
         // <!-- estimated_diameter meters estimated_diameter_max --><!-- estimated_diameter meters estimated_diameter_min -->
         var tdDia = document.createElement("td");
-        tdDia.innerHTML = "At least " + neoArr["estimated_diameter"]["meters"]["estimated_diameter_max"] + " meters";
+        tdDia.innerHTML = neoArr["estimated_diameter"]["meters"]["estimated_diameter_max"] + " meters";
         row.appendChild(tdDia);
 
         document.getElementById("neoTable").appendChild(row);
