@@ -76,6 +76,7 @@ function displayNEOFeed(xml) {
         var tdJPL = document.createElement("td");
         var link = document.createElement("a");
         link.href = neoArr["nasa_jpl_url"];
+        link.target = "iframeJPL";
         link.innerHTML = neoArr["neo_reference_id"];
         row.appendChild(link);
         // <!-- close_approach_data [0] miss_distance miles -->
@@ -88,8 +89,7 @@ function displayNEOFeed(xml) {
         row.appendChild(tdSpeed);
         // <!-- estimated_diameter meters estimated_diameter_max --><!-- estimated_diameter meters estimated_diameter_min -->
         var tdDia = document.createElement("td");
-        tdDia.innerHTML = "Between " + neoArr["estimated_diameter"]["meters"]["estimated_diameter_max"] + " and " +
-            neoArr["estimated_diameter"]["meters"]["estimated_diameter_max"] + " meters";
+        tdDia.innerHTML = "At least " + neoArr["estimated_diameter"]["meters"]["estimated_diameter_max"] + " meters";
         row.appendChild(tdDia);
 
         document.getElementById("neoTable").appendChild(row);
@@ -111,11 +111,9 @@ function displayMarsRover(xml) {
         var imgNode = document.createElement("img");
         imgNode.src = imgLink.href;
         imgNode.alt = "rover_pic" + i;
-        imgNode.width = 125;
-        imgNode.style = "display:inline;margin:5px;";
 
         imgLink.appendChild(imgNode);
-        document.getElementById("marsrover").appendChild(imgLink);
+        document.getElementById("marsroverPhotos").appendChild(imgLink);
     }
 }
 

@@ -1,5 +1,5 @@
 /*
-TODO: better styling
+TODO: design better styling
 */
 
 body {
@@ -14,17 +14,20 @@ body {
 
 ul#bookmarkBar {
     list-style-type: none;
-    overflow: hidden; /* Banner background doesn't extend to bookmarkBar without */
+    overflow: hidden;
+    /* Banner background doesn't extend to bookmarkBar without */
     margin: 15px 0 0 0;
     padding: 0;
     font-size: 20px;
 }
+
 ul#bookmarkBar li a {
     color: white;
     padding: 5px;
     text-decoration: none;
     float: left;
 }
+
 ul#bookmarkBar a:hover {
     background-color: #4D0F0F;
 }
@@ -38,16 +41,49 @@ ul#bookmarkBar a:hover {
     font-family: verdana;
 }
 
-#footer {
+footer {
     text-align: center;
 }
 
 img#apodImg {
     margin: auto;
-    display: block; /* Why is block necessary? */
+    display: block;
+    /* Why is block necessary? */
 }
 
-#neoTable {
-    width: 100%;
+#neo {
+    display: inline-block;
+    max-width: 40%;
+    height: 620px;
+}
+
+#neo table#neoTable {
     text-align: center;
+}
+
+table#neoTable td {
+    max-width: 70px;
+    overflow: hidden;
+    font-size: 80%;
+}
+
+#iframeJPL {
+    display: inline-block;
+    position: absolute;
+    margin-left: 20px;
+    margin-top: 20px;
+    width: 787px;
+    height: 600px;
+}
+
+#marsroverPhotos img {
+    width: 135px;
+    display: inline;
+    margin: 5px;
+}
+
+#marsroverPhotos img:hover {
+    width: 145px;
+    display: inline;
+    margin: 0;
 }
