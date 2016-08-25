@@ -1,82 +1,70 @@
 <!DOCTYPE html>
 <html lang="en-US">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="keywords" content="NASA, nasa, space, astronomy">
-    <meta name="author" content="Gregory Smith">
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="utf-8"/>
+    <meta name="keywords" content="NASA, nasa, space, astronomy"/>
+    <meta name="author" content="Gregory Smith"/>
+    <link rel="stylesheet" href="styles.css"/>
     <title>NASA Daily Digest</title>
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js">
+    </script>
+    <![endif]-->
+    <script src="js_src/nasa_api.js"></script>
 </head>
 
 <body onload="displayNASAStuff()">
-    <script src="js_src/nasa_api.js"></script>
 
-    <div id="banner">
-        <img src="img/logo.png" alt="nasalogo.jpg" height=150 style="float:left;" />
+    <header>
+        <img src="img/logo.png" alt="nasalogo.jpg" height="150" style="float:left;" />
 
         <h1 style="margin:5px">NASA Daily Digest</h1>
         <p style="margin:5px">Your daily dose of NASA info</p>
         <!-- Page Bookmarks -->
-        <ul id="bookmarkBar">
+        <nav id="bookmarkBar">
+        <ul>
             <li><a href="#apod">Pic of the Day</a></li>
             <li><a href="#neo">Near-Earth Objects</a></li>
             <li><a href="#marsrover">Mars Rover Pics</a></li>
         </ul>
+        </nav>
+    </header>
 
-    </div>
-
-    <div id="wrapper">
-        <div id="apod">
+    <div id="container">
+    
+        <!-- A Picture of the Day -->
+        <section id="apod">
             <h2>Picture of the Day</h2>
-            <a id="apodLink">
-                <img id="apodImg" alt="Picture of the Day" />
-            </a>
+            <a id="apodLink"><img id="apodImg" alt="Picture of the Day" style="width:100%" /></a>
             <p id="apodTitle"></p>
             <p id="apodCopyright"></p>
             <p id="apodText"></p>
-        </div>
-
+        </section>
         <hr/>
-
-        <div id="neo">
+        
+        <!-- Near Earth Objects -->
+        <section id="neo">
             <h2>Near-Earth Objects</h2>
             <p id="neoFeedOhNo"></p>
             <table id="neoTable">
-                <tr>
-                    <th>
-                        Absolute Magnitude
-                    </th>
-                    <th>
-                        Name
-                    </th>
-                    <th>
-                        JPL Link
-                    </th>
-                    <th>
-                        Miles away
-                    </th>
-                    <th>
-                        Speed
-                    </th>
-                    <th>
-                        Minimum Diameter
-                    </th>
-                </tr>
+                <tr><th>Absolute Magnitude</th>
+                    <th>Name</th>
+                    <th>JPL Link</th>
+                    <th>Miles away</th>
+                    <th>Speed</th>
+                    <th>Minimum Diameter</th></tr>
             </table>
-        </div>
         <iframe name="iframeJPL" id="iframeJPL" scrolling="yes"></iframe>
-
+        </section>
         <hr/>
 
-        <div id="marsrover">
+        <!-- Mars Rover -->
+        <section id="marsrover">
             <h2>Mars Rover</h2>
-            <div id="marsroverPhotos"></div>
-        </div>
+            <section id="marsroverPhotos"></section>
+        </section>
         <footer>Gregory Smith</footer>
     </div>
 
-
 </body>
-
 </html>

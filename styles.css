@@ -1,54 +1,50 @@
-/*
-TODO: design better styling
-*/
-
 body {
     background-color: #0F0F0F;
+    margin: 0;
+}
+
+header {
+    color: white;
+    background-color: firebrick;
+    padding-bottom: 12px;
+}
+
+footer {text-align: center;}
+
+nav#bookmarkBar {
+    list-style-type: none;
+    display: block;
+    background-color: #4D0F0F;
+    margin-top: 12px;
+}
+nav#bookmarkBar ul{
+    padding-left: 0px;
     margin: 0px;
 }
 
-#banner {
-    background-color: firebrick;
-    padding: 10px 20px;
+nav#bookmarkBar li{
+    display: inline;
+    margin: 5px;
 }
 
-ul#bookmarkBar {
-    list-style-type: none;
-    overflow: hidden;
-    /* Banner background doesn't extend to bookmarkBar without */
-    margin: 15px 0 0 0;
-    padding: 0;
-    font-size: 20px;
-}
-
-ul#bookmarkBar li a {
+nav#bookmarkBar li a{
     color: white;
-    padding: 5px;
     text-decoration: none;
-    float: left;
+    font-size: 18px;
 }
 
-ul#bookmarkBar a:hover {
-    background-color: #4D0F0F;
+nav#bookmarkBar li:hover a:hover {
+    background-color: firebrick;
 }
 
-#wrapper {
-    margin: auto;
-    /* top padding 1px prevents body backround color filling space between banner and wrapper */
-    padding: 1px 40px 5px 40px;
-    width: 70%;
+#container {
+    margin-left: auto;
+    margin-right: auto;
+    /* top padding 1px prevents body background color filling space between banner and wrapper */
+    padding: 1px 35px 5px 40px;
+    width: 980px;
     background-color: #a0a0a0;
     font-family: verdana;
-}
-
-footer {
-    text-align: center;
-}
-
-img#apodImg {
-    margin: auto;
-    display: block;
-    /* Why is block necessary? */
 }
 
 #neo {
@@ -57,7 +53,7 @@ img#apodImg {
     height: 620px;
 }
 
-#neo table#neoTable {
+table#neoTable {
     text-align: center;
 }
 
@@ -75,7 +71,6 @@ table#neoTable th {
 
 #iframeJPL {
     display: inline-block;
-    position: absolute;
     margin-left: 20px;
     margin-top: 20px;
     width: 787px;
@@ -92,4 +87,9 @@ table#neoTable th {
     width: 145px;
     display: inline;
     margin: 0;
+}
+
+/* Older browsers don't display new HTML5 elements as block */
+header, section, footer, aside, nav, main, article, figure{
+    display: block;
 }
