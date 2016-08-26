@@ -1,9 +1,16 @@
+/*
+TODO: change font-sizes to em (pixels/16 = em)
+*/
+
 body {
-    background-color: #0F0F0F;
+    background-image: url("img/spacewallpaper.jpg");
+    background-attachment: fixed;
     margin: 0px;
+    font-size: 100%;
+    /* for compatibility issues */
 }
 
-header {
+header#banner {
     color: white;
     background-color: firebrick;
     padding-bottom: 12px;
@@ -17,8 +24,19 @@ header h1 {
     padding-top: 20px;
 }
 
+header h2 {
+    padding-bottom: 5px;
+    border-bottom: 2px solid black;
+}
+
 footer {
     text-align: center;
+    margin: 0;
+    background-color: black;
+    color: white;
+    width: 100%;
+    padding: 15px;
+    font-size: 24px;
 }
 
 nav#bookmarkBar {
@@ -54,32 +72,54 @@ nav#bookmarkBar li:hover a:hover {
 #container {
     margin-left: auto;
     margin-right: auto;
-    /* top padding 1px prevents body background color filling space between banner and wrapper */
-    padding: 1px 35px 1px 35px;
     width: 980px;
-    background-color: #a0a0a0;
     font-family: verdana;
 }
 
-table#neoTable {
-    text-align: center;
+section {
+    border: 5px outset darkgray;
+    border-radius: 10px;
+    padding: 0px 35px 25px 35px;
+    background-color: #a0a0a0;
 }
 
-table#neoTable td,
-a {
-    max-width: 90px;
+header.sectionHeader {
+    margin: 0px -30px 12px -30px;
+}
+
+#apodImg {
+    margin-top: 12px;
+}
+
+#apodText {
+    text-align: justify;
+}
+
+#neoTable {
+    text-align: center;
     overflow: hidden;
     font-size: 80%;
+    border-collapse: collapse;
+    width: 100%;
+    border: 4px solid lightblue;
 }
 
-table#neoTable th {
-    max-width: 90px;
-    font-size: 80%;
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#neoTable th {
+    background-color: lightblue;
+    padding: 5px;
+    font-size: 110%;
 }
 
 #iframeJPL {
     width: 787px;
     height: 600px;
+    margin: 15px auto 0 auto;
+    display: block;
+    border: 4px solid black;
 }
 
 #marsroverPhotos img {

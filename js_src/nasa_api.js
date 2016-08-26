@@ -2,12 +2,12 @@ var todayDate = new Date();
 var month = todayDate.getMonth() + 1;
 var todayDateISO;
 if (month < 10)
-    todayDateISO = todayDate.getFullYear() + "-0" + month + "-" + todayDate.getDate();
+    todayDateISO = todayDate.getFullYear() + "-0" + month + "-" + todayDate.getDate();   
 else
     todayDateISO = todayDate.getFullYear() + "-" + month + "-" + todayDate.getDate();
 
 // calls other functions to display nasa daily digest
-function displayNASAStuff() {
+function displayNASAStuff()  {
     var apiKey = "0b33tVGBkzuCWCTpuQCyyF2NhDxbVRu7kcsN9snr";
 
     httpGetAsync('https://api.nasa.gov/planetary/apod?api_key=' + apiKey, displayAPOD);

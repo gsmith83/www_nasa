@@ -7,18 +7,21 @@
     <meta name="author" content="Gregory Smith" />
     <link rel="stylesheet" href="styles.css" />
     <title>NASA Daily Digest</title>
+
     <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js">
     </script>
     <![endif]-->
+
     <script src="js_src/nasa_api.js"></script>
 </head>
 
 <body onload="displayNASAStuff()">
 
-    <header>
-        <img src="img/logo.png" alt="nasalogo.jpg" height="150" style="float:left;" />
-
+    <header id="banner">
+        <a href="https://www.nasa.gov">
+            <img src="img/logo.png" alt="nasalogo.jpg" height="150" style="float:left;" />
+        </a>
         <h1>NASA Daily Digest</h1>
         <!-- Page Bookmarks -->
         <nav id="bookmarkBar">
@@ -34,17 +37,20 @@
 
         <!-- A Picture of the Day -->
         <section id="apod">
-            <h2>Picture of the Day</h2>
+            <header class="sectionHeader">
+                <h2>Picture of the Day</h2>
+            </header>
             <a id="apodLink"><img id="apodImg" alt="Picture of the Day" style="width:100%" /></a>
             <p id="apodTitle"></p>
             <p id="apodCopyright"></p>
             <p id="apodText"></p>
         </section>
-        <hr/>
 
         <!-- Near Earth Objects -->
         <section id="neo">
-            <h2>Near-Earth Objects</h2>
+            <header class="sectionHeader">
+                <h2>Near-Earth Objects</h2>
+            </header>
             <p id="neoFeedOhNo"></p>
             <table id="neoTable">
                 <tr>
@@ -58,16 +64,17 @@
             </table>
             <iframe name="iframeJPL" id="iframeJPL" scrolling="yes"></iframe>
         </section>
-        <hr/>
 
         <!-- Mars Rover -->
         <section id="marsrover">
-            <h2>Mars Rover</h2>
-            <section id="marsroverPhotos"></section>
+            <header class="sectionHeader">
+                <h2>Mars Rover</h2>
+            </header>
+            <div id="marsroverPhotos"></div>
         </section>
-        <footer>Gregory Smith</footer>
     </div>
 
+    <footer>Gregory Smith</footer>
 </body>
 
 </html>
