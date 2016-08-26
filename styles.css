@@ -1,15 +1,25 @@
 body {
     background-color: #0F0F0F;
-    margin: 0;
+    margin: 0px;
 }
 
 header {
     color: white;
     background-color: firebrick;
     padding-bottom: 12px;
+    margin: 0;
 }
 
-footer {text-align: center;}
+header h1 {
+    font-family: fantasy;
+    font-size: 48px;
+    margin: 0px 0px 5px 0px;
+    padding-top: 20px;
+}
+
+footer {
+    text-align: center;
+}
 
 nav#bookmarkBar {
     list-style-type: none;
@@ -17,40 +27,38 @@ nav#bookmarkBar {
     background-color: #4D0F0F;
     margin-top: 12px;
 }
-nav#bookmarkBar ul{
-    padding-left: 0px;
+
+nav#bookmarkBar ul {
     margin: 0px;
 }
 
-nav#bookmarkBar li{
+nav#bookmarkBar li {
     display: inline;
-    margin: 5px;
 }
 
-nav#bookmarkBar li a{
+nav#bookmarkBar li a {
     color: white;
     text-decoration: none;
     font-size: 18px;
+    padding-right: 5px;
+    padding-left: 5px;
 }
 
 nav#bookmarkBar li:hover a:hover {
     background-color: firebrick;
+    padding-bottom: 2px;
+    padding-right: 5px;
+    padding-left: 5px;
 }
 
 #container {
     margin-left: auto;
     margin-right: auto;
     /* top padding 1px prevents body background color filling space between banner and wrapper */
-    padding: 1px 35px 5px 40px;
+    padding: 1px 35px 1px 35px;
     width: 980px;
     background-color: #a0a0a0;
     font-family: verdana;
-}
-
-#neo {
-    display: inline-block;
-    max-width: 40%;
-    height: 620px;
 }
 
 table#neoTable {
@@ -70,16 +78,12 @@ table#neoTable th {
 }
 
 #iframeJPL {
-    display: inline-block;
-    margin-left: 20px;
-    margin-top: 20px;
     width: 787px;
     height: 600px;
 }
 
 #marsroverPhotos img {
     width: 135px;
-    display: inline;
     margin: 5px;
 }
 
@@ -89,7 +93,16 @@ table#neoTable th {
     margin: 0;
 }
 
+
 /* Older browsers don't display new HTML5 elements as block */
-header, section, footer, aside, nav, main, article, figure{
+
+header,
+section,
+footer,
+aside,
+nav,
+main,
+article,
+figure {
     display: block;
 }
