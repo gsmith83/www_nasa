@@ -2,18 +2,17 @@ var todayDate = new Date();
 var month = todayDate.getMonth() + 1;
 var todayDateISO;
 if (month < 10)
-    todayDateISO = todayDate.getFullYear() + "-0" + month + "-" + todayDate.getDate();   
+    todayDateISO = todayDate.getFullYear() + "-0" + month + "-" + todayDate.getDate();
 else
     todayDateISO = todayDate.getFullYear() + "-" + month + "-" + todayDate.getDate();
 
 // calls other functions to display nasa daily digest
-function displayNASAStuff()  {
+function displayNASAStuff() {
     var apiKey = "0b33tVGBkzuCWCTpuQCyyF2NhDxbVRu7kcsN9snr";
 
     httpGetAsync('https://api.nasa.gov/planetary/apod?api_key=' + apiKey, displayAPOD);
     httpGetAsync('https://api.nasa.gov/neo/rest/v1/feed?start_date=' + todayDateISO + '&end_date=' + todayDateISO + '&api_key=' + apiKey, displayNEOFeed);
-    //TODO: change sol=1000 below
-    httpGetAsync('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=' + apiKey, displayMarsRover);
+    httpGetAsync('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=' + todayDateISO + '&api_key=' + apiKey, displayMarsRover);
 }
 
 // Async http getter
@@ -41,16 +40,16 @@ function displayAPOD(xml) {
 }
 
 // Finds all neos on today's date and displays them by generating html tags
-//TODO: display all information about closes neo
+//TODO: display all information about closest neo
 //TODO: allow choosing days
 //TODO: display the date and info of nearest neo that threatens earth
-//TODO: use Iframes to display JPL links?
 function displayNEOFeed(xml) {
     var responseArr = JSON.parse(xml.responseText);
     var elementCount = responseArr["element_count"];
 
     if (responseArr != null) {
         document.getElementById('neoFeedOhNo').innerHTML = "Oh shit! There are " + elementCount + " near-earth asteroids threatening our existence today!";
+        document.getElementById('iframeJPL').src = responseArr["near_earth_objects"][todayDateISO][0]["nasa_jpl_url"];
     }
 
     for (i = 0; i < elementCount; i++) {
@@ -94,11 +93,16 @@ function displayNEOFeed(xml) {
 }
 
 // Mars rover stuff
-//TODO: get latest photos
-//TODO: allow uses to choose day
+//TODO: fail better
+//TODO: allow user to choose day
 function displayMarsRover(xml) {
     var responseArr = JSON.parse(xml.responseText);
     var elementCount = responseArr["photos"].length;
+
+    if (elementCount == 0) {
+        document.getElementById("marsroverPhotos").appendChild("No photos taken today");
+        return;
+    }
 
     for (i = 0; i < elementCount; i++) {
         var imgLink = document.createElement("a");
