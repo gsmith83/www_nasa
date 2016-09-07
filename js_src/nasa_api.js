@@ -1,10 +1,13 @@
 var todayDate = new Date();
 var month = todayDate.getMonth() + 1;
+var day = todayDate.getDate();
+if (day < 10)
+    day = "0" + day;
 var todayDateISO;
 if (month < 10)
-    todayDateISO = todayDate.getFullYear() + "-0" + month + "-" + todayDate.getDate();
+    todayDateISO = todayDate.getFullYear() + "-0" + month + "-" + day;
 else
-    todayDateISO = todayDate.getFullYear() + "-" + month + "-" + todayDate.getDate();
+    todayDateISO = todayDate.getFullYear() + "-" + month + "-" + day;
 
 // calls other functions to display nasa daily digest
 function displayNASAStuff() {
@@ -27,7 +30,6 @@ function httpGetAsync(url, callback) {
 }
 
 // Gets the apod and info and finds the html tags to display them in
-//TODO: allow choosing days
 function displayAPOD(xml) {
     var responseArr = JSON.parse(xml.responseText);
     if (responseArr != null) {
@@ -40,9 +42,6 @@ function displayAPOD(xml) {
 }
 
 // Finds all neos on today's date and displays them by generating html tags
-//TODO: display all information about closest neo
-//TODO: allow choosing days
-//TODO: display the date and info of nearest neo that threatens earth
 function displayNEOFeed(xml) {
     var responseArr = JSON.parse(xml.responseText);
     var elementCount = responseArr["element_count"];
@@ -93,8 +92,6 @@ function displayNEOFeed(xml) {
 }
 
 // Mars rover stuff
-//TODO: fail better
-//TODO: allow user to choose day
 function displayMarsRover(xml) {
     var responseArr = JSON.parse(xml.responseText);
     var elementCount = responseArr["photos"].length;
@@ -116,5 +113,3 @@ function displayMarsRover(xml) {
         document.getElementById("marsroverPhotos").appendChild(imgLink);
     }
 }
-
-//TODO: more apis
