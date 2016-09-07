@@ -1,0 +1,7 @@
+* Figure out better task/issues service
+* Better design
+* Allow user to navigate days in each category
+* Better mars rover failure
+* More sections/apis
+* Less clunky todayDateISOS
+* Link to home page in footer
